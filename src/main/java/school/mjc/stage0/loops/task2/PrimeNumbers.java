@@ -1,21 +1,24 @@
 package school.mjc.stage0.loops.task2;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrimeNumbers {
-    public static void printPrimeNumbers(int printToInclusive) {
-        int primeCheckNumber = 2;
-        int divisibleCount = 0;
-        int n = 2;
-        while (n <= printToInclusive) {
-            while (primeCheckNumber <= n / 2) {
-                if(n%primeCheckNumber !=0){
-                    System.out.println(n);
-                    n++;
+    public void printPrimeNumbers(int printToInclusive) {
+        List<Integer> primeNumbers = new ArrayList<>();
+        for (int numberToCheck = 2; numberToCheck <= printToInclusive; numberToCheck++){
+            boolean isPrime = true;
+            for (int factor = 2; factor <=numberToCheck/2; factor++){
+                if (numberToCheck % factor == 0){
+                    isPrime = false;
+                    break;
                 }
-                break;
             }
+            if (isPrime){
+                primeNumbers.add(numberToCheck);
         }
-    }
-    public static void main (String[] args){
-        printPrimeNumbers(10);
+        }
+        for(int number : primeNumbers){
+            System.out.println(number);
+        }
     }
 }
